@@ -38,7 +38,7 @@
         var windowHalfY = window.innerHeight / 2;
 
         var radius = 80;
-        var segments = 32;
+        var segments = 20;
 
         var loader = new THREE.FontLoader();
         loader.load( 'threejs/fonts/droid_sans_regular.typeface.json', function ( font ) {
@@ -55,7 +55,7 @@
             document.body.appendChild( container );
 
             //create the camera and set the camera position
-            camera = new THREE.PerspectiveCamera( 50, window.innerWidth / window.innerHeight, 1, 1000 );
+            camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 1000 );
             camera.position.set( 0, 150, 500 );
 
             scene = new THREE.Scene();
@@ -67,8 +67,8 @@
             //create geometry for the two texts
             textGeometry = new THREE.TextGeometry( text, {
                 font: font,
-                size: 26,
-                height: 20,
+                size: 24,
+                height: 15,
                 curveSegments: 2
             } );
 
@@ -126,7 +126,7 @@
 
             //create cloud mesh that is big enough to encompass entire screen to simulate perspective 3D space
             starMesh = new THREE.Mesh(
-    			new THREE.SphereGeometry( radius + 370, segments, segments ),
+    			new THREE.SphereGeometry( radius + 370, segments / 2, segments / 2 ),
     			new THREE.MeshBasicMaterial( {
     				map: THREE.ImageUtils.loadTexture( 'threejs/images/galaxy_starfield.png' ),
     				side: THREE.BackSide
